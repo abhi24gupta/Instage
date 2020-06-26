@@ -24,11 +24,8 @@ router.get("/", function(req ,res){
         firstname:req.body.first,
         lastname:req.body.last,
         email:req.body.email,
-        avatar:req.body.avatar
+        avatar:req.body.avatar    
         });
-        if(newUser.avatar===null){
-            newUser.avatar="https://res.cloudinary.com/instage/image/upload/v1593144336/sample.jpg";
-        }
      User.register(newUser, req.body.password, function(err, user){
          if(err){
              req.flash("error", err.message);

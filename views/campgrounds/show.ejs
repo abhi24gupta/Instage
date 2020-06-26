@@ -12,19 +12,17 @@
         </div>
       <div class="col-md-9">
           <div class="thumbnail">
-            <img class="img-responsive" src="<%= campground.image %>">
+            <div class="camp_img_more">
+                <img class="img-responsive" src="<%= campground.image %>">
+            </div>
             <div class="caption-full">
-         
                 <span>
                     <a href="/campgrounds/<%= campground._id%>/like"><i class="glyphicon glyphicon-heart"></i></a>
                 </span>
                 <span >
                     <a href="/campgrounds/<%= campground._id %>/comments/new"> <i class="glyphicon glyphicon-comment"></i></a>
                 </span>
-                
                 <span><p><%= campground.likes %> Likes</p></span>
-                
-            
                 <h4><a><%=campground.name%></a></h4>
                 <p><%= campground.description %></p>
                 <p><em>Submitted By <a href="/user/<%= campground.author.id%>"><%=campground.author.username %></a>  </em></p>

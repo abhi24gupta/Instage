@@ -14,16 +14,13 @@ var express                =   require("express"),
     methodOverride         =   require("method-override"),
     flash                  =   require("connect-flash"),
     Like                   =   require("./models/likes");
-//---------------------Routes Requirement------------------------------------------------------------------------- 
-var commentRoutes       =  require("./routes/comments"),
-    campgroundRoutes    =  require("./routes/campgrounds"),
-    indexRoutes         =  require("./routes/index");
 
 //------------------------Mongoose DB Setup-----------------------------------------------------------------------
+//  mongoose.connect("mongodb+srv://abhinav24:golugupta19@instage-5ahtn.mongodb.net/test?retryWrites=true&w=majority" , {useNewUrlParser: true, useUnifiedTopology: true}).then(() => console.log( 'Database Connected' ))
+//  .catch(err => console.log( err ));
 
-
-//  mongoose.connect("mongodb+srv://abhinav24:golugupta19@instage-5ahtn.mongodb.net/test?retryWrites=true&w=majority", {useNewUrlParser: true, useUnifiedTopology: true}).then(() => console.log( 'Database Connected' )).catch(err => console.log( err ));
-mongoose.connect("mongodb://localhost/yelp", {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect("mongodb+srv://abhinav24:golugupta19@instage-5ahtn.mongodb.net/test?retryWrites=true&w=majority", {useNewUrlParser: true, useUnifiedTopology: true}).then(() => console.log( 'Database Connected' )).catch(err => console.log( err ));
+// mongoose.connect("mongodb://localhost/yelp", {useNewUrlParser: true, useUnifiedTopology: true});
 
 app.use(bodyparser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
@@ -31,6 +28,11 @@ app.use(express.static(__dirname+"/public"));
 app.use(methodOverride("_method"));
 app.use(flash());
 // seedDB();
+
+//---------------------Routes Requirement------------------------------------------------------------------------- 
+var commentRoutes       =  require("./routes/comments"),
+    campgroundRoutes    =  require("./routes/campgrounds"),
+    indexRoutes         =  require("./routes/index");
 
 // ==========PASSPORT CONFIGURATION =================================
 app.use(require("express-session")({
@@ -60,5 +62,5 @@ app.use(campgroundRoutes);
 // app.listen(process.env.PORT , process.env.IP);
 
 app.listen(3000, function(){
-   
+   console.log("Server start --");
 });
